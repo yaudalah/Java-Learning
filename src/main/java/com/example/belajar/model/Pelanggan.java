@@ -2,7 +2,9 @@ package com.example.belajar.model;
 
 import com.fasterxml.jackson.annotation.JsonFormat;
 import com.sun.istack.NotNull;
-import lombok.*;
+import lombok.Data;
+import lombok.NoArgsConstructor;
+import lombok.AllArgsConstructor
 import org.springframework.data.repository.cdi.Eager;
 
 import javax.persistence.*;

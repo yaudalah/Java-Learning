@@ -77,7 +77,7 @@ public class ServicePelangganImpl implements ServicePelanggan {
 
     @Override
     public void deletePelangganById(String id) {
-        log.info("Pelanggan who has id {} has been deleted from the database", id);
+        log.info("Pelanggan dengan id {} telah dihapus dari database", id);
         pelangganRepository.deleteById(id);
     }
 
