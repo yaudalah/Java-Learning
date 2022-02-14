@@ -1,5 +1,6 @@
 package com.example.belajar.service;
 
+import com.example.belajar.dto.LoginDTO;
 import com.example.belajar.dto.PelangganDTO;
 import com.example.belajar.model.Pelanggan;
 import com.example.belajar.repository.PelangganRepository;
@@ -35,6 +36,20 @@ public class ServicePelangganImpl implements ServicePelanggan {
         pelangganRepository.save(pelanggan);
         return true;
     }
+
+    @Override
+    public Object login(LoginDTO loginDTO) {
+        List<Pelanggan> lstacc = pelangganRepository.findAll();
+        for (Pelanggan plg : lstacc) {
+            if (plg.getEmail().equals(loginDTO.getEmail()) && plg.getPassword().equals(loginDTO.getPassword())) {
+                LoginDTO plgs = new LoginDTO();
+                plgs.setEmail(plg.getEmail());
+                plgs.setPassword(plg.getEmail());
+            }
+
+        }
+    }
+
 
     @Override
     public List<PelangganDTO> getAllPelanggan() {

@@ -1,5 +1,6 @@
 package com.example.belajar.controller;
 
+import com.example.belajar.dto.LoginDTO;
 import com.example.belajar.dto.PelangganDTO;
 import com.example.belajar.model.Pelanggan;
 import com.example.belajar.service.ServicePelanggan;
@@ -7,9 +8,7 @@ import lombok.RequiredArgsConstructor;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
-import org.springframework.web.servlet.support.ServletUriComponentsBuilder;
 
-import java.net.URI;
 import java.util.List;
 
 @CrossOrigin
@@ -24,14 +23,21 @@ public class PelangganController {
     @PostMapping("save/")
     public ResponseEntity<Object> createAccountPelanggan(@RequestBody Pelanggan pelanggan) {
         Object dataPelanggan = servicePelanggan.createAccountPelanggan(pelanggan);
-        URI uri = URI.create(ServletUriComponentsBuilder
-                .fromCurrentContextPath().path("/belajar/pelanggan/save/").toUriString());
         if (dataPelanggan.equals(false)) {
             return new ResponseEntity<>(HttpStatus.BAD_REQUEST);
         }
-        return new ResponseEntity<>(uri,HttpStatus.CREATED);
+        return new ResponseEntity<>(dataPelanggan,HttpStatus.CREATED);
     }
 
+    @ResponseBody
+    @GetMapping("login/")
+    public ResponseEntity<Object> login(@RequestBody LoginDTO data){
+        Object dataPelanggan = servicePelanggan.login(data);
+        if (dataPelanggan.equals(false)) {
+            return new ResponseEntity<>(HttpStatus.BAD_REQUEST);
+        }
+        return new ResponseEntity<>(dataPelanggan,HttpStatus.OK);
+    }
 
     @ResponseBody
     @GetMapping("getAll/")

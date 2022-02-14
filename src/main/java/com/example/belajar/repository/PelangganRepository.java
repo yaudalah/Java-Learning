@@ -6,5 +6,4 @@ import org.springframework.stereotype.Repository;
 
 @Repository
 public interface PelangganRepository extends JpaRepository<Pelanggan, String> {
-    Pelanggan findByName(String name);
 }

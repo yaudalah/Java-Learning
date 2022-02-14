@@ -4,10 +4,15 @@ import com.fasterxml.jackson.annotation.JsonFormat;
 import com.sun.istack.NotNull;
 import lombok.Data;
 import lombok.NoArgsConstructor;
-import lombok.AllArgsConstructor
+import lombok.AllArgsConstructor;
 import org.springframework.data.repository.cdi.Eager;
 
-import javax.persistence.*;
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.Id;
+import javax.persistence.Table;
+import javax.persistence.Temporal;
+import javax.persistence.TemporalType;
 import java.util.ArrayList;
 import java.util.Collection;
 import java.util.Date;
@@ -18,7 +23,7 @@ import java.util.UUID;
 @NoArgsConstructor
 @AllArgsConstructor
 @Table(name = "Pelanggan")
-public class Pelanggan {
+public class Pelanggan extends BaseModel {
     @Id
     private String id;
 
