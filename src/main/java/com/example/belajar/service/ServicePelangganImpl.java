@@ -39,15 +39,17 @@ public class ServicePelangganImpl implements ServicePelanggan {
 
     @Override
     public Object login(LoginDTO loginDTO) {
-        List<Pelanggan> lstacc = pelangganRepository.findAll();
-        for (Pelanggan plg : lstacc) {
-            if (plg.getEmail().equals(loginDTO.getEmail()) && plg.getPassword().equals(loginDTO.getPassword())) {
-                LoginDTO plgs = new LoginDTO();
-                plgs.setEmail(plg.getEmail());
-                plgs.setPassword(plg.getEmail());
+        List<Pelanggan> cariPelanggan = pelangganRepository.findAll();
+        for (Pelanggan pelanggan : cariPelanggan) {
+            log.info("Akun pelanggan dengan email {} telah login", loginDTO.getEmail());
+            if (pelanggan.getEmail().equals(loginDTO.getEmail()) && pelanggan.getPassword().equals(loginDTO.getPassword())) {
+                LoginDTO pelangganDTO = new LoginDTO();
+                pelangganDTO.setEmail(pelanggan.getEmail());
+                pelangganDTO.setPassword(pelanggan.getPassword());
+                return pelangganDTO;
             }
-
         }
+        return false;
     }
 
 
